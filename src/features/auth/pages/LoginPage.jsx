@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Input } from '../../../components/common/Input';
 import { useAuth } from '../hooks/useAuth';
-import '../../../styles/global.css'; // Puxando o seu CSS original
+import '../../../styles/global.css';
 
 const LoginPage = () => {
   const { login, loading } = useAuth();
@@ -15,7 +14,7 @@ const LoginPage = () => {
     e.preventDefault();
     const result = await login(formData);
     if (result.success) {
-      alert("Login realizado com sucesso! (Redirecionando...)");
+      alert("Login realizado com sucesso!");
     }
   };
 
@@ -27,8 +26,9 @@ const LoginPage = () => {
         <p className="sub-title">GESTÃO ACADÊMICA DE<br />HORAS COMPLEMENTARES</p>
         
         <div className="hero-visual">
-          <div className="circle-frame">
-            <img src="/src/assets/alunos.png" alt="Estudante" />
+          <div className="circle-placeholder">
+             {/* Círculo cinza enquanto a imagem não existe */}
+             <span>FOTO ALUNOS</span>
           </div>
         </div>
       </div>
@@ -37,39 +37,42 @@ const LoginPage = () => {
       <div className="form-section">
         <div className="login-card">
           <div className="card-header">
-            <img src="/src/assets/logo2.png" alt="Logo UP Digital" />
+            {/* Retângulo azul simulando o logo */}
+            <div className="logo-placeholder">LOGO</div>
           </div>
 
-          <form onSubmit={handleSubmit}>
-            <div className="input-group">
-              <select 
-                className="pwa-input" 
-                required
-                value={formData.perfil}
-                onChange={(e) => setFormData({...formData, perfil: e.target.value})}
-              >
-                <option value="" disabled>PERFIL</option>
-                <option value="ADMINISTRADOR">ADMINISTRADOR</option>
-                <option value="COORDENADOR">COORDENADOR</option>
-                <option value="ALUNO">ALUNO</option>
-              </select>
-            </div>
+          <form onSubmit={handleSubmit} className="login-form">
+            <select 
+              className="pwa-input" 
+              required
+              value={formData.perfil}
+              onChange={(e) => setFormData({...formData, perfil: e.target.value})}
+            >
+              <option value="" disabled>PERFIL</option>
+              <option value="ADMINISTRADOR">ADMINISTRADOR</option>
+              <option value="COORDENADOR">COORDENADOR</option>
+              <option value="ALUNO">ALUNO</option>
+            </select>
 
-            <Input 
+            <input 
+              className="pwa-input"
               type="text" 
               placeholder="MATRÍCULA" 
+              required
               value={formData.matricula}
               onChange={(e) => setFormData({...formData, matricula: e.target.value})}
             />
 
-            <Input 
+            <input 
+              className="pwa-input"
               type="password" 
               placeholder="SENHA" 
+              required
               value={formData.senha}
               onChange={(e) => setFormData({...formData, senha: e.target.value})}
             />
 
-            <button type="submit" id="btnEntrar" disabled={loading}>
+            <button type="submit" className="btn-entrar" disabled={loading}>
               {loading ? "CARREGANDO..." : "ENTRAR"}
             </button>
             
