@@ -1,0 +1,224 @@
+/* ==========================================================================
+   1. CONFIGURAÇÕES GLOBAIS E RESETS
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7f9;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   2. ELEMENTOS DECORATIVOS (Círculos e Barras de Fundo)
+   ========================================================================== */
+.deco-circle-orange {
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    background-color: #e67e22; /* Laranja característico do projeto */
+    border-radius: 50%;
+    bottom: -150px;
+    right: -80px;
+    z-index: -1;
+}
+
+.deco-bar-blue {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 100%;
+    background-color: #004aad; /* Azul institucional */
+    z-index: -1;
+}
+
+/* ==========================================================================
+   3. SIDEBAR (Menu Lateral Laranja)
+   ========================================================================== */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 70px;
+    height: 100%;
+    background-color: #e67e22;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 25px;
+    z-index: 100;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    margin-top: 60px;
+}
+
+.sidebar-nav i, .menu-icon {
+    font-size: 26px;
+    color: #000; /* Ícones pretos conforme o print */
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.sidebar-nav i:hover {
+    opacity: 0.7;
+}
+
+/* ==========================================================================
+   4. LAYOUT DE PÁGINAS (Containers Principais)
+   ========================================================================== */
+.main-content {
+    margin-left: 70px; /* Espaço para a sidebar não cobrir o conteúdo */
+    padding: 40px;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #444;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ==========================================================================
+   5. COMPONENTES DE TABELA (Admin e Validação)
+   ========================================================================== */
+.course-table, .admin-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+    margin-top: 20px;
+}
+
+.course-table th, .admin-table th {
+    background-color: #d1d9e6; /* Cinza azulado do cabeçalho */
+    padding: 15px;
+    color: #555;
+    font-size: 0.85rem;
+    text-align: left;
+    border-radius: 4px;
+}
+
+.course-table td, .admin-table td {
+    background-color: #fff;
+    padding: 18px 15px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+/* ==========================================================================
+   6. BOTÕES DE AÇÃO E CORES (CRUD e Validação)
+   ========================================================================== */
+.btn-green { background-color: #28a745; color: white; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+.btn-blue  { background-color: #004aad; color: white; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+.btn-orange { background-color: #ff9100; color: white; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; }
+
+.btn-analyze {
+    background-color: #5dade2;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   7. MODAIS (Confirmar Exclusão, Regras e Edição)
+   ========================================================================== */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 450px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.btn-confirm-delete {
+    background-color: #ff9100; /* Laranja vibrante de exclusão */
+    color: white;
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   8. DASHBOARD E CARDS DE STATUS (Relatórios)
+   ========================================================================== */
+.stat-card {
+    background: #e3ebf3; /* Fundo azulado claro */
+    padding: 35px;
+    border-radius: 25px;
+    margin-bottom: 20px;
+}
+
+.stat-value {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #222;
+}
+
+.certificate-card {
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 30px;
+    border-radius: 15px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.status-badge {
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   9. FORMULÁRIOS (Perfil e Cadastro)
+   ========================================================================== */
+.pwa-input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    background-color: #fff;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.profile-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #e3ebf3;
+    padding: 40px;
+    border-radius: 30px;
+}
